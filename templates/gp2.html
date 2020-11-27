@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+
+        <style  type = "text/css">
+			body
+			{
+				padding: 0px;
+				margin: 0px;
+				background-color: lightgrey;
+			}
+			
+			.header
+			{
+				padding: 0px;
+				margin: 0px;
+				background: rgb(0, 112, 152);
+				height: 150px;
+			}
+
+            .header img
+			{
+				float: left;
+				width: 150px;
+				height: 150px;
+				background-color: lightgrey;
+				border: 5px solid grey;
+				border-radius: 100px;
+				margin-right: 250px;
+			}
+
+            .header h1 
+			{ 
+				padding-top: 50px;
+				color:rgb(0, 112, 192);			
+				color: white;
+			}
+			
+			nav ul
+			{  
+				margin:0px; 
+				padding:20px; 
+				list-style: none; 
+				background: grey;
+				text-align: center;
+			}
+
+            nav li 
+			{
+				display: inline-block; 
+				margin:0px 90px; 
+				font-weight: bold;
+			}
+
+			h2
+			{
+				color:rgb(0, 112, 152);
+				padding-left: 20px;
+			}
+			
+			strong
+			{
+				color:rgb(0, 112, 152);
+			}			
+
+            a 
+			{
+				font-size: 20px;
+				text-decoration:none; 
+				color:white; 
+				text-align:center;
+			}
+
+			.form 
+			{ 
+				position: relative; top: 70px;
+			}
+
+			span  input
+			{
+				height: 30px; 
+				width: 60px; 
+				display: none; 
+			}
+
+            button
+			{ 
+				height: 40px; 
+				width: 50px; 
+				background-color:rgb(148,190,228);
+				border: 1px black solid;
+				color: black;
+				font-size: 12pt;
+			}
+
+            span:hover input 
+			{  	
+				display: inline; 
+			}
+
+            .abo
+			{
+				position: relative; top: 60px;
+			}
+
+            .about
+			{
+				margin: 0px 200px 0px 100px;;
+				font-size:20px;
+			}
+
+            .bu 
+			{
+				text-align:center; 
+			}
+
+			div input
+			{  
+				font-weight: bold;
+				height: 30px;
+				border: 1px black solid;
+				font-size: 12pt;
+				color: dimgrey;
+			}
+
+            .preV
+			{
+				margin: 0px 30px;
+			}
+
+			table 
+			{ 
+				border-collapse: collapse;
+				position: relative;
+				left: 20%;
+				font-size: 13pt;
+				width: 50em;
+
+			}
+			
+            thead 
+			{
+				background: rgb(0, 112, 152); 
+				color: white; 
+			}
+			
+			th, td
+			{
+				padding: 15px;
+				border: 1px black solid;
+				text-align: left;
+			}
+
+            .last
+			{ 
+				background: rgb(0, 112, 152); 
+				text-align:center; 
+				color:white; 
+				font-size:30px;
+			}
+
+          </style>
+
+    </head>
+
+    <body>
+
+        <header class="header"> <!-- header element creates a header for the page -->
+			<img src = "/static/Alloy.png" alt = "Alloy logo" />
+			<h1>Welcome to Alloy Combinations Properties Predictor </h1> 
+        </header>
+
+
+		<section class = "1"> <!-- Begin section 1 -->
+			<nav> <!-- nav element groups navigation links  -->
+				<ul>
+					<li><a href="#liAbout">About</a></li>
+					<li><a href="#liAtoms">Atoms</a></li>
+					<li><a href="#liPre">Prediction Values</a> </li>
+					<li><a href="#liExp"> Explanation Features </a></li>
+				</ul>
+			</nav>
+		</section>
+
+ 
+
+		<section class="abo">
+			<h2 id="liAbout">About</h2><br>
+			<p class ="about"> 	We predict the features' percentages of different combinations of the alloys based on the different 
+								numbers of each element within the alloy combination.<br><br>
+								<strong>What is the alloy?</strong><br>
+								Alloys are solid combinations of mixtures of metal or of metals and nonmetallic elements that have 
+								desirable and distinctive properties.<br><br>
+								<strong>Why a website for alloy combination properties prediction? </strong><br>
+								Scientists could simulate the combining process and predict the features' percentages of the new resulting 
+								compounds with higher performance prediction and without even wasting scarce materials or take the risk 
+								when dealing with dangerous ones.<br><br><br>
+			</p>
+        </section>
+
+
+		<section class= "form">
+			<form  action="http://localhost:5000/result" method="post" onSubmit="return checkform()">
+			
+				<h2 id="liAtoms"> Enter The Number Of Atoms</h2><br>
+				<div style=" text-align:center;">
+					<span class="elem"><button disabled>Ag</button> <input id="Ag" name="Ag" value="0" type="number"  step="any" min="0" oninput="update('Ag')"/> </span>
+					<span class="elem"><button disabled>Cu</button> <input id="Cu" name="Cu" value="0" type="number"  step="any" min="0" oninput="update('Cu')"/> </span>
+					<span class="elem"><button disabled>Zr</button> <input id="Zr" name="Zr" value="0" type="number"  step="any" min="0" oninput="update('Zr')"/> </span>
+					<span class="elem"><button disabled>Ca</button> <input id="Ca" name="Ca" value="0" type="number"  step="any" min="0" oninput="update('Ca')"/> </span>
+					<span class="elem"><button disabled>Al</button> <input id="Al" name="Al" value="0" type="number"  step="any" min="0" oninput="update('Al')"/> </span>
+					<span class="elem"><button disabled>Co</button> <input id="Co" name="Co" value="0" type="number"  step="any" min="0" oninput="update('Co')"/> </span>
+					<span class="elem"><button disabled>Mg</button> <input id="Mg" name="Mg" value="0" type="number"  step="any" min="0" oninput="update('Mg')"/> </span>
+					<span class="elem"><button disabled>Sr</button> <input id="Sr" name="Sr" value="0" type="number"  step="any" min="0" oninput="update('Sr')"/> </span>
+					<span class="elem"><button disabled>La</button> <input id="La" name="La" value="0" type="number"  step="any" min="0" oninput="update('La')"/> </span>
+					<span class="elem"><button disabled>Ni</button> <input id="Ni" name="Ni" value="0" type="number"  step="any" min="0" oninput="update('Ni')"/> </span> <br><br>
+					<span class="elem"><button disabled>Y </button> <input id="Y"  name="Y"  value="0" type="number"  step="any" min="0" oninput="update('Y')"/>  </span>
+					<span class="elem"><button disabled>Au</button> <input id="Au" name="Au" value="0" type="number"  step="any" min="0" oninput="update('Au')"/> </span>
+					<span class="elem"><button disabled>Pd</button> <input id="Pd" name="Pd" value="0" type="number"  step="any" min="0" oninput="update('Pd')"/> </span>
+					<span class="elem"><button disabled>Si</button> <input id="Si" name="Si" value="0" type="number"  step="any" min="0" oninput="update('Si')"/> </span>
+					<span class="elem"><button disabled>Ge</button> <input id="Ge" name="Ge" value="0" type="number"  step="any" min="0" oninput="update('Ge')"/> </span>
+					<span class="elem"><button disabled>Be</button> <input id="Be" name="Be" value="0" type="number"  step="any" min="0" oninput="update('Be')"/> </span>
+					<span class="elem"><button disabled>Zn</button> <input id="Zn" name="Zn" value="0" type="number"  step="any" min="0" oninput="update('Zn')"/> </span>
+					<span class="elem"><button disabled>Ga</button> <input id="Ga" name="Ga" value="0" type="number"  step="any" min="0" oninput="update('Ga')"/> </span>
+					<span class="elem"><button disabled>Ce</button> <input id="Ce" name="Ce" value="0" type="number"  step="any" min="0" oninput="update('Ce')"/> </span>
+					<span class="elem"><button disabled>Fe</button> <input id="Fe" name="Fe" value="0" type="number"  step="any" min="0" oninput="update('Fe')"/> </span> <br><br>
+					<span class="elem"><button disabled>B </button> <input id="B"  name="B"  value="0" type="number"  step="any" min="0" oninput="update('B')"/>  </span>
+					<span class="elem"><button disabled>Nb</button> <input id="Nb" name="Nb" value="0" type="number"  step="any" min="0" oninput="update('Nb')"/> </span> 
+					<span class="elem"><button disabled>Ta</button> <input id="Ta" name="Ta" value="0" type="number"  step="any" min="0" oninput="update('Ta')"/> </span>
+					<span class="elem"><button disabled>Cr</button> <input id="Cr" name="Cr" value="0" type="number"  step="any" min="0" oninput="update('Cr')"/> </span>
+					<span class="elem"><button disabled>Mo</button> <input id="Mo" name="Mo" value="0" type="number"  step="any" min="0" oninput="update('Mo')"/> </span>
+					<span class="elem"><button disabled>C </button> <input id="C"  name="C"  value="0" type="number"  step="any" min="0" oninput="update('C')"/>  </span>
+					<span class="elem"><button disabled>Er</button> <input id="Er" name="Er" value="0" type="number"  step="any" min="0" oninput="update('Er')"/> </span>
+					<span class="elem"><button disabled>Ti</button> <input id="Ti" name="Ti" value="0" type="number"  step="any" min="0" oninput="update('Ti')"/> </span>
+					<span class="elem"><button disabled>In</button> <input id="In" name="In" value="0" type="number"  step="any" min="0" oninput="update('In')"/> </span>
+					<span class="elem"><button disabled>Hf</button> <input id="Hf" name="Hf" value="0" type="number"  step="any" min="0" oninput="update('Hf')"/> </span> <br><br>
+					<span class="elem"><button disabled>Sn</button> <input id="Sn" name="Sn" value="0" type="number"  step="any" min="0" oninput="update('Sn')"/> </span>
+					<span class="elem"><button disabled>Dy</button> <input id="Dy" name="Dy" value="0" type="number"  step="any" min="0" oninput="update('Dy')"/> </span>
+					<span class="elem"><button disabled>P </button> <input id="P"  name="P"  value="0" type="number"  step="any" min="0" oninput="update('P')"/>  </span>
+					<span class="elem"><button disabled>Mn</button> <input id="Mn" name="Mn" value="0" type="number"  step="any" min="0" oninput="update('Mn')"/> </span>
+					<span class="elem"><button disabled>Tm</button> <input id="Tm" name="Tm" value="0" type="number"  step="any" min="0" oninput="update('Tm')"/> </span>
+					<span class="elem"><button disabled>Gd</button> <input id="Gd" name="Gd" value="0" type="number"  step="any" min="0" oninput="update('Gd')"/> </span>
+					<span class="elem"><button disabled>Ho</button> <input id="Ho" name="Ho" value="0" type="number"  step="any" min="0" oninput="update('Ho')"/> </span>
+					<span class="elem"><button disabled>Nd</button> <input id="Nd" name="Nd" value="0" type="number"  step="any" min="0" oninput="update('Nd')"/> </span>
+					<span class="elem"><button disabled>Pr</button> <input id="Pr" name="Pr" value="0" type="number"  step="any" min="0" oninput="update('Pr')"/> </span> <br><br>
+					<span class="elem"><button disabled>Tb</button> <input id="Tb" name="Tb" value="0" type="number"  step="any" min="0" oninput="update('Tb')"/> </span> 
+					<span class="elem"><button disabled>S </button> <input id="S"  name="S"  value="0" type="number"  step="any" min="0" oninput="update('S')"/>  </span>
+					<span class="elem"><button disabled>Pt</button> <input id="Pt" name="Pt" value="0" type="number"  step="any" min="0" oninput="update('Pt')"/> </span>
+					<span class="elem"><button disabled>Sc</button> <input id="Sc" name="Sc" value="0" type="number"  step="any" min="0" oninput="update('Sc')"/> </span>
+					<span class="elem"><button disabled>Sm</button> <input id="Sm" name="Sm" value="0" type="number"  step="any" min="0" oninput="update('Sm')"/> </span> 	
+				</div> 
+				<br><br>
+
+				<div class="bu">
+					<input type="button" onclick="print()" value="Selected Atoms"  title="The number of atoms of elements the user has chosen.">
+					<input type="reset" onclick="resetValues()" value="Reset All Values" title="Reset all values to zero." >
+				
+					<p id="result"> </p>
+				
+					<input type="submit" value="Predict The Features" title="Show the results of the value prediction."/>
+					
+				</div>
+
+			</form>
+		</section>
+
+	<br><br><br><br><br><br><br>
+
+		<section>
+			<div id="liPre">
+			<!--{{ prediction_text }}-->
+				<h2> Predicted Values Are </h2>
+				<table border = 1>
+				{% for row in result %}
+				
+				    <thead>
+					<tr>
+						<th> Feature Name </th>
+					    <th> Predicted Value </th>
+					</tr>
+					</thead>
+					
+					<tbody>
+					<tr>
+						<td> Trg </td>
+					    <td> {{row[0]}} </td>
+					</tr>
+					<tr>
+						<td> Density composition average </td>
+					    <td> {{row[1]}} </td>
+					</tr>
+					<tr>
+						<td> IsBoron composition average </td>
+					    <td> {{row[2]}} </td>
+					</tr>
+					<tr>
+						<td> IsDBlock composition average </td>
+					    <td> {{row[3]}} </td>
+					</tr>
+					<tr>
+						<td> IsTransitionMetal composition average </td>
+					    <td> {{row[4]}} </td>
+					</tr>
+					<tr>
+						<td> NdValence composition average </td>
+					    <td> {{row[5]}} </td>
+					</tr>
+					<tr>
+						<td> NValance composition average </td>
+					    <td> {{row[6]}} </td>
+					</tr>
+					<tr>
+						<td> HeatVaporization max value </td>
+					    <td> {{row[7]}} </td>
+					</tr>
+					
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<br><br><br><br>
+    </section>
+	
+	<br><br><br>
+    <h2 id="liExp"> Explanation Of Features </h2>
+	<br>
+
+   <table class="table-bordered" id="timetable" border=1>
+
+                                       <!-- Table Head -->
+
+                                       <thead>
+
+                                                 <tr>
+
+                                                           <th>Feature Name</th>
+
+                                                           <th>Explanation/Refers to</th>
+
+                                                 </tr>
+
+                              </thead>
+
+                                       <tbody>
+
+                                                 <tr>
+
+                     <td>Trg</td>
+
+                     <td>T is an abbreviation for temperature degrees. It refers to the glass transition temperature.</td>
+
+                                          </tr>
+
+ 
+
+                                          <tr>
+
+                     <td>Density composition average</td>
+
+                     <td>It is the degree of compression of the material.</td>
+
+                                          </tr>
+
+					<tr>
+
+                     <td>IsBoron composition average</td>
+
+                     <td>Means the percentage of similarity between the resulted compound compare to the features of the boron.</td>
+
+                                          </tr>
+
+                                          <tr>
+
+                     <td>IsDBlock composition average</td>
+
+                     <td>Means the percentage of elements in the compound belongs to the transition elements in the periodic table.</td>
+
+                                          </tr>
+
+
+                                          <tr>
+
+                     <td>IsTransitionMetal composition average</td>
+
+                     <td>Means the percentage of transition metals in the compound. </td>
+
+                                          </tr> 
+
+                                          <tr>
+
+                     <td>NdValence composition average</td>
+
+                     <td>It refers to neodymium electrons valence.</td>
+
+                                          </tr> 
+
+                                          <tr>
+
+                     <td>NValance composition average</td>
+
+                     <td>Means the number of valence electrons in the compound.</td>
+
+                                          </tr>
+
+                                          <tr>
+
+                     <td>HeatVaporization max value</td>
+
+                     <td>It is the transfer of an element or compound from a liquid state to a vapor.</td>
+
+                                          </tr>
+                </tbody>
+            </table>
+      <br>
+
+	<footer>
+		<p class="last"> <br> Thank you for visiting the website of alloy combinations properties predictor <br> <br> </p>
+	</footer>
+
+
+       <script>
+
+             var nums ={Ag:0, Cu:0, Zr:0, Ca:0, Al:0, Co:0, Mg:0, Sr:0, La:0, Ni:0, Y:0, Au:0, Pd:0, Si:0, Ge:0, Be:0, Zn:0, Ga:0, Ce:0, Fe:0 ,B:0, Nb:0,
+
+                       Ta:0, Cr:0, Mo:0, C:0, Er:0, Ti:0, In:0, Hf:0, Sn:0, Dy:0, P:0, Mn:0, Tm:0, Gd:0, Ho:0, Nd:0, Pr:0, Tb:0, S:0, Pt:0 , Sc:0, Sm:0};
+
+			function update (Name) 
+		    {
+				var x = document.getElementById(Name).value;
+                nums[Name] = x;
+            }
+
+			function print()
+            {
+				for(var i in nums) 
+					if(nums[i] !=0 )  
+						document.getElementById("result").innerHTML += i + ': ' + nums[i]+ '<br>' ;  
+			}
+
+			function resetValues ()
+			{
+				document.getElementById("result").innerHTML = ' ';
+				for(var i in nums) nums[i]=0;
+			} 
+			
+                       function checkform() {  
+              for(var i in nums) 
+                  if(nums[i] != 0)
+                     return true;
+                 window.alert("you need to enter values first")
+                 return false;
+
+              }
+
+
+
+
+        </script>
+
+    </body>
+
+</html>
